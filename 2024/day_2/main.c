@@ -43,6 +43,8 @@ int main() {
 
     printf("Answer: %d\n", safe);
 
+    fclose(fp);
+
     return 0;
 }
 

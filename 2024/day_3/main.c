@@ -37,9 +37,9 @@ int main() {
                 mult(&i, line, &sum);
                 mul_seq = 0;
             }
-            else if (mul_seq == 1 && line[i] != 'u' || 
-                    mul_seq == 2 && line[i] != 'l' ||
-                    mul_seq == 3 && line[i] != '(')         mul_seq = 0;
+            else if ((mul_seq == 1 && line[i] != 'u') || 
+                    (mul_seq == 2 && line[i] != 'l')  ||
+                    (mul_seq == 3 && line[i] != '('))       mul_seq = 0;
 
             /* DO() */
             if (do_seq == 0 && line[i] == 'd')              do_seq++; // d
@@ -54,9 +54,9 @@ int main() {
                 printf("Enable\n");
                 enabled = 1;
                 do_seq = 0;
-            } else if (do_seq == 1 && line[i] != 'o'    ||
-                       do_seq == 2 && line[i] != '('    || 
-                       do_seq == 3 && line[i] != ')') {
+            } else if ((do_seq == 1 && line[i] != 'o')    ||
+                       (do_seq == 2 && line[i] != '(')    || 
+                       (do_seq == 3 && line[i] != ')')) {
                 printf("Reset do()\n");
                 do_seq = 0;
             }
@@ -77,11 +77,11 @@ int main() {
                 printf("Disable\n");
                 enabled = 0;
                 dont_seq = 0;
-            } else if (dont_seq == 1 && line[i] != 'o'  ||
-                       dont_seq == 2 && line[i] != 'n'  ||
-                       dont_seq == 3 && line[i] != '\'' ||
-                       dont_seq == 4 && line[i] != 't'  ||
-                       dont_seq == 5 && line[i] != '(') {
+            } else if ((dont_seq == 1 && line[i] != 'o')  ||
+                       (dont_seq == 2 && line[i] != 'n')  ||
+                       (dont_seq == 3 && line[i] != '\'') ||
+                       (dont_seq == 4 && line[i] != 't')  ||
+                       (dont_seq == 5 && line[i] != '(')) {
                 printf("Reset don't()\n");
                 dont_seq = 0;
             }
@@ -89,6 +89,8 @@ int main() {
     }
 
     printf("Answer=%lld\n", sum);
+
+    fclose(fp);
 
     return 0;
 }
@@ -119,7 +121,7 @@ void mult(int *i, char line[], long long int *sum) {
             // end of operations
             op2[n2_len] = '\0';
             n2_len++;
-            printf("%d * %d = %d\n", atoll(op1), atoll(op2), atoll(op1) * atoll(op2));
+            printf("%lld * %lld = %lld\n", atoll(op1), atoll(op2), atoll(op1) * atoll(op2));
             *sum += atoll(op1) * atoll(op2);
             printf("The sum is %lld\n", *sum);
             break;
