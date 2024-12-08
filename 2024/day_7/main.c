@@ -44,6 +44,8 @@ int main() {
 
     printf("The answer is %lld\n", sum);
 
+    fclose(fp);
+
     return 0;
 }
 
