@@ -59,7 +59,6 @@ void solve() {
         long start = MAX(ranges[i].start, end + 1);
 
         if (ranges[i].end >= start) {
-            printf("start=%ld, end=%ld, ranges=%ld\n", start, ranges[i].end, ranges[i].end - start + 1);
             count += ranges[i].end - start + 1;
             end = ranges[i].end;
         }
